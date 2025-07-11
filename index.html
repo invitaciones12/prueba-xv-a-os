@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Te invito a mi fiesta</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Custom styles and animations */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Using custom fonts */
+        .font-great-vibes { font-family: 'Great Vibes', cursive; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+
+        /* Background with particles */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-color: #1a1a1a;
+            background-image: url('');
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+        }
+
+        /* Glassmorphism effect for cards */
+        .card-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+
+        /* Animation for elements on scroll */
+        .reveal {
+            position: relative;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Custom button style */
+        .btn-gold {
+            background: linear-gradient(45deg, #d4af37, #b48811);
+            color: #1a1a1a;
+            font-weight: 600;
+            border-radius: 9999px;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
+            display: inline-block;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        /* Separator style */
+        .separator {
+            height: 1px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 1rem auto;
+        }
+
+        /* Watermark style */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 10vw; /* Responsive font size */
+            color: rgba(255, 255, 255, 0.08); /* Subtle color */
+            font-weight: 800; /* Bold */
+            pointer-events: none; /* Allows clicking through the watermark */
+            z-index: 1000;
+            white-space: nowrap;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Watermark -->
+    <div class="watermark">4471660425</div>
+
+    <!-- Particle effect background container -->
+    <div id="particles-js"></div>
+
+    <div class="relative z-10">
+        <!-- Hero Section -->
+        <header class="min-h-screen w-full flex flex-col items-center justify-center text-center p-4" style="background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);">
+            <div class="reveal active">
+                <h2 class="font-great-vibes text-5xl md:text-7xl text-white" style="text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);">Mis XV Años</h2>
+                <div class="my-8">
+                    <img src="https://placehold.co/300x450/1a1a1a/d4af37?text=XV" alt="Quinceañera" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover mx-auto border-4 border-yellow-500/50 shadow-lg shadow-yellow-500/20">
+                </div>
+                <h1 class="font-playfair text-4xl md:text-6xl tracking-widest uppercase text-white" style="text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);">Un Sueño Hecho Realidad</h1>
+                <p class="mt-4 text-lg md:text-2xl font-light text-gray-300">SÁBADO, 25 DE OCTUBRE, 2025</p>
+            </div>
+        </header>
+
+        <!-- Countdown Section -->
+        <section class="py-20 px-4 text-center">
+            <div class="reveal">
+                <h2 class="font-great-vibes text-4xl md:text-5xl text-yellow-400 mb-8">La cuenta regresiva ha comenzado</h2>
+                <div id="countdown" class="flex justify-center items-center flex-wrap gap-4 md:gap-8 text-white">
+                    <div class="card-glass p-4 md:p-6 w-28 text-center">
+                        <div id="days" class="font-playfair text-4xl md:text-5xl">00</div>
+                        <div class="text-sm uppercase tracking-widest text-gray-300">Días</div>
+                    </div>
+                    <div class="card-glass p-4 md:p-6 w-28 text-center">
+                        <div id="hours" class="font-playfair text-4xl md:text-5xl">00</div>
+                        <div class="text-sm uppercase tracking-widest text-gray-300">Horas</div>
+                    </div>
+                    <div class="card-glass p-4 md:p-6 w-28 text-center">
+                        <div id="minutes" class="font-playfair text-4xl md:text-5xl">00</div>
+                        <div class="text-sm uppercase tracking-widest text-gray-300">Minutos</div>
+                    </div>
+                    <div class="card-glass p-4 md:p-6 w-28 text-center">
+                        <div id="seconds" class="font-playfair text-4xl md:text-5xl">00</div>
+                        <div class="text-sm uppercase tracking-widest text-gray-300">Segundos</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="py-20 px-4">
+            <div class="max-w-3xl mx-auto text-center reveal">
+                <i class="fas fa-quote-left text-3xl text-yellow-400 mb-4"></i>
+                <p class="text-xl md:text-2xl italic leading-relaxed text-gray-200">
+                    "Hoy dejo atrás mi niñez para comenzar un nuevo capítulo. Es una noche de sueños, alegría y gratitud, y mi mayor deseo es compartirla con las personas que más amo."
+                </p>
+                <i class="fas fa-quote-right text-3xl text-yellow-400 mt-4"></i>
+            </div>
+        </section>
+
+        <!-- Parents Section -->
+        <section class="py-20 px-4 text-center">
+            <div class="reveal">
+                <h2 class="font-great-vibes text-4xl md:text-5xl text-yellow-400 mb-2">Con la bendición de mis padres</h2>
+                <p class="text-lg text-gray-300">Nombre del Padre & Nombre de la Madre</p>
+                <div class="separator"></div>
+                <h2 class="font-great-vibes text-4xl md:text-5xl text-yellow-400 mt-12 mb-2">Y el cariño de mis padrinos</h2>
+                <p class="text-lg text-gray-300">Nombre del Padrino & Nombre de la Madrina</p>
+            </div>
+        </section>
+
+        <!-- Event Details Section -->
+        <section class="py-20 px-4">
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12">
+                <!-- Ceremony -->
+                <div class="text-center card-glass p-8 reveal">
+                    <div class="mb-4">
+                        <i class="fas fa-church text-5xl text-yellow-400"></i>
+                    </div>
+                    <h3 class="font-playfair text-3xl text-white uppercase tracking-wider">Ceremonia</h3>
+                    <div class="separator"></div>
+                    <p class="text-gray-300">Agradeceremos a Dios en una misa especial.</p>
+                    <p class="font-semibold text-lg text-white mt-4">Parroquia de San Juan Bautista</p>
+                    <p class="font-semibold text-lg text-white mt-2">6:00 PM</p>
+                    <a href="#" target="_blank" class="mt-6 btn-gold">
+                        <i class="fas fa-map-marker-alt mr-2"></i> Ver Ubicación
+                    </a>
+                </div>
+                <!-- Reception -->
+                <div class="text-center card-glass p-8 reveal">
+                    <div class="mb-4">
+                        <i class="fas fa-glass-cheers text-5xl text-yellow-400"></i>
+                    </div>
+                    <h3 class="font-playfair text-3xl text-white uppercase tracking-wider">Recepción</h3>
+                    <div class="separator"></div>
+                    <p class="text-gray-300">¡Acompáñame a celebrar en una noche inolvidable!</p>
+                    <p class="font-semibold text-lg text-white mt-4">Salón de Eventos "El Encanto"</p>
+                    <p class="font-semibold text-lg text-white mt-2">8:00 PM</p>
+                    <a href="#" target="_blank" class="mt-6 btn-gold">
+                        <i class="fas fa-map-marker-alt mr-2"></i> Ver Ubicación
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Info Section -->
+        <section class="py-20 px-4">
+            <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-8 text-center">
+                <!-- Gift suggestion -->
+                <div class="reveal card-glass p-6 flex-1 min-w-[280px]">
+                    <i class="fas fa-gift text-4xl text-yellow-400 mb-3"></i>
+                    <h4 class="font-playfair text-2xl text-white">Mesa de Regalos</h4>
+                    <p class="text-gray-400 mt-2">Tu presencia es mi mejor regalo, pero si deseas obsequiarme algo, puedes hacerlo en Lluvia de Sobres.</p>
+                </div>
+                <!-- Dress code -->
+                <div class="reveal card-glass p-6 flex-1 min-w-[280px]">
+                     <i class="fas fa-user-tie text-4xl text-yellow-400 mb-3"></i>
+                    <h4 class="font-playfair text-2xl text-white">Código de Vestir</h4>
+                    <p class="text-gray-400 mt-2">Formal</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="text-center py-12 px-4">
+            <div class="reveal">
+                <h2 class="font-great-vibes text-5xl text-white mb-4">¡Te espero!</h2>
+                <p class="text-gray-400">Con mucho cariño.</p>
+                <a href="https://wa.me/4471660425?text=Hola%2C%20quiero%20mas%20informacion%20de%20las%20invitaciones" target="_blank" class="mt-8 btn-gold">
+                    <i class="fab fa-whatsapp mr-2"></i> Contáctame
+                </a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // --- Particles.js Configuration ---
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 60, // Number of particles
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#d4af37" // Particle color
+                },
+                "shape": {
+                    "type": "circle",
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                    }
+                },
+                "line_linked": {
+                    "enable": false, // Set to false to remove lines between particles
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1, // Speed of particles
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse" // Particles move away on hover
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push" // Adds more particles on click
+                    },
+                    "resize": true
+                },
+                 "modes": {
+                    "repulse": {
+                        "distance": 100,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                }
+            },
+            "retina_detect": true
+        });
+
+        // --- Countdown Timer Logic ---
+        const countdown = () => {
+            // NOTE: The date is set for demonstration purposes.
+            // You should replace "October 25, 2025 18:00:00" with the actual event date.
+            const countDate = new Date("October 25, 2025 18:00:00").getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            const textDay = Math.floor(gap / day);
+            const textHour = Math.floor((gap % day) / hour);
+            const textMinute = Math.floor((gap % hour) / minute);
+            const textSecond = Math.floor((gap % minute) / second);
+
+            document.getElementById('days').innerText = textDay < 10 ? '0' + textDay : textDay;
+            document.getElementById('hours').innerText = textHour < 10 ? '0' + textHour : textHour;
+            document.getElementById('minutes').innerText = textMinute < 10 ? '0' + textMinute : textMinute;
+            document.getElementById('seconds').innerText = textSecond < 10 ? '0' + textSecond : textSecond;
+        };
+        setInterval(countdown, 1000);
+
+        // --- Scroll Reveal Animation Logic ---
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150; // Distance from bottom of screen to trigger animation
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                } else {
+                    reveals[i].classList.remove('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        // Initial check
+        revealOnScroll();
+    </script>
+
+</body>
+</html>
